@@ -1,16 +1,10 @@
 #define CMDLENGTH 45
-#define DELIMITER "  "
-#define CLICKABLE_BLOCKS
+#define DELIMITER "]["
+// #define CLICKABLE_BLOCKS
 
 const Block blocks[] = {
-	BLOCK("sb-mail",    1800, 17),
-	BLOCK("sb-music",   0,    18),
-	BLOCK("sb-disk",    1800, 19),
-	BLOCK("sb-memory",  10,   20),
-	BLOCK("sb-loadavg", 5,    21),
-	BLOCK("sb-mic",     0,    26),
-	BLOCK("sb-record",  0,    27),
-	BLOCK("sb-volume",  0,    22),
-	BLOCK("sb-battery", 5,    23),
-	BLOCK("sb-date",    1,    24)
+	BLOCK("awk -v a=\"$(awk '/cpu /{print $2+$4,$2+$4+$5}' /proc/stat; sleep 1)\" '/cpu /{split(a,b,\" \"); {printf(\"[ %3.f%\"), 100*($2+$4-b[1])/($2+$4+$5-b[2])}}'  /proc/stat", 15, 0),
+	BLOCK("free -t | awk 'NR == 2 {printf(\" %3.f%\"), $3/$2*100}'", 15, 0),
+	BLOCK("pulsemixer --get-volume | awk '{printf(\" %3d%\"), $1}'", 0, 1),
+	BLOCK("date '+%a %F %I:%M %p]'", 5, 0),
 };
