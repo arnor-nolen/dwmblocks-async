@@ -3,7 +3,7 @@
 // #define CLICKABLE_BLOCKS
 
 const Block blocks[] = {
-        BLOCK("pacman -Qu | wc -l | awk '{printf(\"[ %4d\"), $1}'", 3600, 0),
+        BLOCK("pacman -Qu | wc -l | awk '{printf(\"[ %4d\"), $1}'", 15, 0),
         BLOCK("~/sum_work.sh | awk '{printf(\"華 %4.1fh\"), $1}'", 15, 0),
 	BLOCK("awk -v a=\"$(awk '/cpu /{print $2+$4,$2+$4+$5}' /proc/stat; sleep 1)\" '/cpu /{split(a,b,\" \"); {printf(\"﬙ %3.f%\"), 100*($2+$4-b[1])/($2+$4+$5-b[2])}}'  /proc/stat", 15, 0),
 	BLOCK("free -t | awk 'NR == 2 {printf(\" %3.f%\"), $3/$2*100}'", 15, 0),
