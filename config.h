@@ -8,5 +8,5 @@ const Block blocks[] = {
 	BLOCK("pulsemixer --get-volume | awk '{printf(\" %3d%\"), $1}'", 0, 1),
         BLOCK("~/sum_work.sh | awk '{printf(\" %4.1fh\"), $1}'", 15, 0),
 	BLOCK("date '+%a %F %I:%M %p'", 5, 0),
-        BLOCK("setxkbmap -print -verbose 10 | grep layout | awk '{printf(\"%s]\"), $2}' ", 0, 2),
+        BLOCK("xkblayout-state print \"%s]\"", 0, 2),
 };
